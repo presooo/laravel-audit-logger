@@ -1,0 +1,52 @@
+{
+    "name": "audit-trail/laravel-audit-logger",
+    "description": "Pluggable request/response audit logging with cross-service correlation for Laravel services.",
+    "keywords": ["laravel", "audit", "logging", "observability", "correlation-id", "tracing"],
+    "license": "MIT",
+    "type": "library",
+    "require": {
+        "php": "^8.1",
+        "illuminate/bus": "^10.0|^11.0|^12.0",
+        "illuminate/console": "^10.0|^11.0|^12.0",
+        "illuminate/database": "^10.0|^11.0|^12.0",
+        "illuminate/filesystem": "^10.0|^11.0|^12.0",
+        "illuminate/http": "^10.0|^11.0|^12.0",
+        "illuminate/queue": "^10.0|^11.0|^12.0",
+        "illuminate/support": "^10.0|^11.0|^12.0"
+    },
+    "require-dev": {
+        "league/flysystem-aws-s3-v3": "^3.0",
+        "mockery/mockery": "^1.6",
+        "orchestra/testbench": "^8.0|^9.0|^10.0",
+        "phpunit/phpunit": "^10.5|^11.0|^12.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "AuditTrail\\Laravel\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "AuditTrail\\Laravel\\Tests\\": "tests/"
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit",
+        "test:coverage": "vendor/bin/phpunit --coverage-text"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "AuditTrail\\Laravel\\AuditLoggerServiceProvider"
+            ],
+            "aliases": {
+                "Audit": "AuditTrail\\Laravel\\Facades\\Audit"
+            }
+        }
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true
+}
